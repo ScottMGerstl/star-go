@@ -1,0 +1,5 @@
+node_modules
+platforms
+app/**/*.js
+.vscode
+app/**/*.scss
