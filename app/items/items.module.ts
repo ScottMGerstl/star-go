@@ -4,6 +4,9 @@ import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 
 import { SharedModule } from '../shared/shared.module';
 import { ItemsRoutingModule } from './items-routing.module';
+
+import { InventoryComponent } from './inventory/inventory.component';
+import { ItemsComponent } from './items.component';
 import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
@@ -16,6 +19,8 @@ import { ShopComponent } from './shop/shop.component';
         })
     ],
     declarations: [
+        InventoryComponent,
+        ItemsComponent,
         ShopComponent
     ],
     schemas: [

@@ -37,6 +37,7 @@
       "multiline": "never",
       "singleline": "never"
     }],
+    "eofline": false,
     "quotemark": [true, "single", "jsx-double"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     "whitespace": [true,

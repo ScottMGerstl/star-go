@@ -40,9 +40,15 @@ export class MyDrawerComponent implements OnInit {
                 icon: '\uf015'
             },
             {
+                title: 'Inventory',
+                name: 'inventory',
+                route: '/items/inventory',
+                icon: '\uf290'
+            },
+            {
                 title: 'Shop',
                 name: 'shop',
-                route: '/items',
+                route: '/items/shop',
                 icon: '\uf217'
             },
             {

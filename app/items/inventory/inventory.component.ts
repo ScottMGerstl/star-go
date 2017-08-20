@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
-    selector: 'Settings',
+    selector: 'Inventory',
     moduleId: module.id,
-    templateUrl: './settings.component.html'
+    templateUrl: './inventory.component.html'
 })
-export class SettingsComponent {
+export class InventoryComponent {
     constructor(private fonticon: TNSFontIconService) { }
 }
