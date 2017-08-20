@@ -1,4 +1,10 @@
 <base-navigation-page actionBarTitle="Shop" selectedPage="Shop">
-    <Label class="page-icon fa" [text]="'fa-cart-plus' | fonticon"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+    <!-- <ScrollView class="shop-container"> -->
+        <GridLayout columns="auto,auto" [rows]="getRows()" class="shop-category-list">
+            <FlexboxLayout *ngFor="let item of shopCategories;let i = index" [col]="getColumnForIndex(i)" [row]="getRowForIndex(i)" class="shop-category">
+                <Image [src]="item.imageUrl" class="shop-category-icon" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="center"></Image>
+                <Label [text]="item.title" class="shop-category-label"></Label>
+            </FlexboxLayout>
+        </GridLayout>
+    <!-- </ScrollView> -->
 </base-navigation-page>

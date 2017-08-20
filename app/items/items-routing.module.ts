@@ -5,6 +5,7 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ItemsComponent } from './items.component';
 import { ShopComponent } from './shop/shop.component';
+import { WeaponListComponent } from './weapons/weapon-list-page.component';
 
 const routes: Routes = [
     {
@@ -12,7 +13,8 @@ const routes: Routes = [
         component: ItemsComponent,
         children: [
             { path: 'inventory', component: InventoryComponent },
-            { path: 'shop', component: ShopComponent }
+            { path: 'shop', component: ShopComponent },
+            { path: 'weapons', component: WeaponListComponent }
         ]
     }
 ];
