@@ -2,7 +2,8 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { NativeScriptUISideDrawerModule } from 'nativescript-telerik-ui/sidedrawer/angular';
 
-import { BaseNavigationComponent } from './base-components/base-navigation-page.component';
+import { ActionBarComponent } from './action-bar/action-bar.component';
+import { BaseNavigationComponent } from './base-navigation-page/base-navigation-page.component';
 import { MyDrawerComponent } from './my-drawer/my-drawer.component';
 
 @NgModule({
@@ -11,10 +12,12 @@ import { MyDrawerComponent } from './my-drawer/my-drawer.component';
         NativeScriptUISideDrawerModule
     ],
     declarations: [
+        ActionBarComponent,
         BaseNavigationComponent,
         MyDrawerComponent
     ],
     exports: [
+        ActionBarComponent,
         BaseNavigationComponent,
         MyDrawerComponent,
         NativeScriptUISideDrawerModule
