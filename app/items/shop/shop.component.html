@@ -1,10 +1,16 @@
 <base-navigation-page actionBarTitle="Shop" selectedPage="Shop">
-    <!-- <ScrollView class="shop-container"> -->
+    <ScrollView class="shop-container">
         <GridLayout columns="auto,auto" [rows]="getRows()" class="shop-category-list">
-            <FlexboxLayout *ngFor="let item of shopCategories;let i = index" [col]="getColumnForIndex(i)" [row]="getRowForIndex(i)" class="shop-category">
-                <Image [src]="item.imageUrl" class="shop-category-icon" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="center"></Image>
+            <GridLayout class="shop-category-margin" columns="20,auto" rows="20,auto" *ngFor="let item of shopCategories;let i = index" [col]="getColumnForIndex(i)" [row]="getRowForIndex(i)">
+                <FlexboxLayout class="shop-category" row="1" col="1">
+                    <Image [src]="item.imageUrl" class="shop-category-icon"></Image>
+                    <Label [text]="item.title" class="shop-category-label"></Label>
+                </FlexboxLayout>
+            </GridLayout>
+            <!-- <FlexboxLayout *ngFor="let item of shopCategories;let i = index" [col]="getColumnForIndex(i)" [row]="getRowForIndex(i)" class="shop-category">
+                <Image [src]="item.imageUrl" class="shop-category-icon"></Image>
                 <Label [text]="item.title" class="shop-category-label"></Label>
-            </FlexboxLayout>
+            </FlexboxLayout> -->
         </GridLayout>
-    <!-- </ScrollView> -->
+    </ScrollView>
 </base-navigation-page>

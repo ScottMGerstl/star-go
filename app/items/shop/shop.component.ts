@@ -37,6 +37,18 @@ export class ShopComponent implements OnInit {
             title: 'Vehicles',
             imageUrl: 'https://cdn0.iconfinder.com/data/icons/star-wars/512/falcon-512.png',
             route: 'items/weapons'
+        }, {
+            title: 'Weapons',
+            imageUrl: 'https://maxcdn.icons8.com/Share/icon/ios7/Cinema//lightsaber1600.png',
+            route: 'weapons'
+        }, {
+            title: 'Armor',
+            imageUrl: 'https://cdn4.iconfinder.com/data/icons/video-game-items-concepts/128/armor-helmet-spartan-512.png',
+            route: '/items/weapons'
+        }, {
+            title: 'Vehicles',
+            imageUrl: 'https://cdn0.iconfinder.com/data/icons/star-wars/512/falcon-512.png',
+            route: 'items/weapons'
         }];
     }
 
@@ -53,7 +65,7 @@ export class ShopComponent implements OnInit {
             result += 'auto';
         }
 
-        return result;
+        return result + ',10';
     }
 
     private getRowForIndex(i: number): number {
