@@ -2,7 +2,7 @@
 <StackLayout>
     <GridLayout columns="*, 30" rows="auto" class="search-text-container">
         <TextField col="0" (textChange)=onSearchTextChanged($event) #searchTextField></TextField>
-        <Label col="1" text="X" (tap)="onClearSearchTapped($event)" class="clear-search-text-button"></Label>
+        <Label col="1" [text]="'fa-times' | fonticon" (tap)="onClearSearchTapped($event)" class="clear-search-text-button fa"></Label>
     </GridLayout>
     <ListView [items]="displayItems" (itemTap)="onItemTapped($event)" (longPress)="onItemLongPress($event)">
         <ng-template let-item="item">

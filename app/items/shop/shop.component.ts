@@ -41,9 +41,16 @@ export class ShopComponent implements OnInit {
             }
         };
 
-        this.router.navigate([category.route, navDef]);
+        this.router.navigate([category.route], navDef);
     }
 
+    /**
+     * gets the row configuration for the GridLayout that contains the categories
+     *
+     * @private
+     * @returns {string} the row config (auto,auto,10)
+     * @memberof ShopComponent
+     */
     private getRows(): string {
         let result: string = '';
 
@@ -57,13 +64,32 @@ export class ShopComponent implements OnInit {
             result += 'auto';
         }
 
-        return result + ',10';
+        // Add a bottom margin to the layout
+        result += ',10';
+
+        return result;
     }
 
+    /**
+     * finds which row the category belongs in based on its index and total length of all items
+     *
+     * @private
+     * @param {number} i the index of the category list being processed
+     * @returns {number} the row number (zero based)
+     * @memberof ShopComponent
+     */
     private getRowForIndex(i: number): number {
         return Math.floor(i / 2);
     }
 
+    /**
+     * finds which column the category belongs in based on its index and total column count
+     *
+     * @private
+     * @param {number} i the index of the category list being processed
+     * @returns {number} the column number (zero based)
+     * @memberof ShopComponent
+     */
     private getColumnForIndex(i: number): number {
         return Math.floor(i % 2);
     }

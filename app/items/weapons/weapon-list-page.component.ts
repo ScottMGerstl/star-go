@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { ExtendedNavigationExtras, RouterExtensions } from 'nativescript-angular/router/router-extensions';
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { Subscription } from 'rxjs';
 import { GestureEventData } from 'ui/gestures';
 import { TextField } from 'ui/text-field';
@@ -32,7 +33,7 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
 
     private listItemLongPressed: boolean = false;
 
-    constructor(private _itemService: ItemService, private _router: RouterExtensions, private _zone: NgZone) { //, private weaponFilterService: WeaponFilterService, private storage: StorageService) {
+    constructor(private fonticon: TNSFontIconService, private _itemService: ItemService, private _router: RouterExtensions, private _zone: NgZone) { //, private weaponFilterService: WeaponFilterService, private storage: StorageService) {
         super();
 
         this.allItems = [];
