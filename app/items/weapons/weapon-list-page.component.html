@@ -1,0 +1,15 @@
+<action-bar actionBarTitle='Weapons'></action-bar>
+<StackLayout>
+    <GridLayout columns="*, 30" rows="auto" class="search-text-container">
+        <TextField col="0" (textChange)=onSearchTextChanged($event) #searchTextField></TextField>
+        <Label col="1" text="X" (tap)="onClearSearchTapped($event)" class="clear-search-text-button"></Label>
+    </GridLayout>
+    <ListView [items]="displayItems" (itemTap)="onItemTapped($event)" (longPress)="onItemLongPress($event)">
+        <ng-template let-item="item">
+            <GridLayout columns="*, 80" rows="*" class="item-container">
+                <Label col="0" [text]="item.name" class="item-name"></Label>
+                <Label col="1" [text]="item.price" class="item-price"></Label>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+</StackLayout>

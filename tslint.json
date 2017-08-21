@@ -37,6 +37,7 @@
       "multiline": "never",
       "singleline": "never"
     }],
+    "one-line":[],
     "max-line-length": 200,
     "eofline": false,
     "quotemark": [true, "single", "jsx-double"],
