@@ -8,6 +8,7 @@ import { ItemsRoutingModule } from './items-routing.module';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ItemsComponent } from './items.component';
 import { ShopComponent } from './shop/shop.component';
+import { WeaponListComponent } from './weapons/weapon-list-page.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { ShopComponent } from './shop/shop.component';
     declarations: [
         InventoryComponent,
         ItemsComponent,
-        ShopComponent
+        ShopComponent,
+        WeaponListComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
