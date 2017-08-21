@@ -40,6 +40,7 @@
     "one-line":[],
     "max-line-length": 200,
     "eofline": false,
+    "arrow-parens": false,
     "quotemark": [true, "single", "jsx-double"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     "whitespace": [true,

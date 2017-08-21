@@ -11,7 +11,7 @@ import { BaseComponent } from '../../shared/base-component/base.component';
 // import { WeaponFilterRunner } from '../weapon-filter/weapon-filter-runner';
 import { Weapon } from './weapon';
 
-import { ItemService } from '../../../shared/services/services.module';
+import { ItemService } from '../item.service';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,7 +32,7 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
 
     private listItemLongPressed: boolean = false;
 
-    constructor(private _itemService: ItemService, private _router: RouterExtensions, private _zone: NgZone, private weaponFilterService: WeaponFilterService, private storage: StorageService) {
+    constructor(private _itemService: ItemService, private _router: RouterExtensions, private _zone: NgZone) { //, private weaponFilterService: WeaponFilterService, private storage: StorageService) {
         super();
 
         this.allItems = [];
@@ -46,10 +46,10 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
         this.allItems = this._itemService.getWeaponList();
         this.displayItems = this.allItems;
 
-        this.weaponFilterSubscription = this.weaponFilterService.weaponFilterSaved.subscribe((filter: WeaponFilter) => {
-            // this.filter = filter;
-            // this.handlePropertyFilter(filter);
-        });
+        // this.weaponFilterSubscription = this.weaponFilterService.weaponFilterSaved.subscribe((filter: WeaponFilter) => {
+        //     this.filter = filter;
+        //     this.handlePropertyFilter(filter);
+        // });
     }
 
     public ngOnDestroy(): void {

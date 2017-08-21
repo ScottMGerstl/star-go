@@ -18,7 +18,7 @@ export class MyDrawerComponent implements OnInit {
     * It is used to pass the current page title from the containing page component.
     * You can check how it is used in the 'isPageSelected' function below.
     *************************************************************/
-    @Input() selectedPage: string;
+    @Input() private selectedPage: string;
 
     private _navigationItems: Array<any>;
 
@@ -31,7 +31,7 @@ export class MyDrawerComponent implements OnInit {
     * The navigationItems property is initialized here and is data bound to <ListView> in the MyDrawer view file.
     * Add, remove or edit navigationItems to change what is displayed in the app drawer list.
     *************************************************************/
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this._navigationItems = [
             {
                 title: 'Home',
@@ -60,7 +60,7 @@ export class MyDrawerComponent implements OnInit {
         ];
     }
 
-    get navigationItems(): Array<any> {
+    private get navigationItems(): Array<any> {
         return this._navigationItems;
     }
 
@@ -69,7 +69,7 @@ export class MyDrawerComponent implements OnInit {
     * The 'itemTap' event handler of the app drawer <ListView> is used to navigate the app
     * based on the tapped navigationItem's route.
     *************************************************************/
-    onNavigationItemTap(args: ItemEventData): void {
+    private onNavigationItemTap(args: ItemEventData): void {
         const navigationItemView = args.view;
         const navigationItemRoute = navigationItemView.bindingContext.route;
 
@@ -85,7 +85,7 @@ export class MyDrawerComponent implements OnInit {
     * It is used to determine whether the item should have the 'selected' class.
     * The 'selected' class changes the styles of the item, so that you know which page you are on.
     *************************************************************/
-    isPageSelected(pageTitle: string): boolean {
+    private isPageSelected(pageTitle: string): boolean {
         return pageTitle === this.selectedPage;
     }
 }

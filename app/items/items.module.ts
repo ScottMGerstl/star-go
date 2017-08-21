@@ -10,6 +10,8 @@ import { ItemsComponent } from './items.component';
 import { ShopComponent } from './shop/shop.component';
 import { WeaponListComponent } from './weapons/weapon-list-page.component';
 
+import { ItemService } from './item.service';
+
 @NgModule({
     imports: [
         NativeScriptModule,
@@ -24,6 +26,9 @@ import { WeaponListComponent } from './weapons/weapon-list-page.component';
         ItemsComponent,
         ShopComponent,
         WeaponListComponent
+    ],
+    providers: [
+        ItemService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
