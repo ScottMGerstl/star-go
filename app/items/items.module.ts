@@ -8,9 +8,11 @@ import { ItemsRoutingModule } from './items-routing.module';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ItemsComponent } from './items.component';
 import { ShopComponent } from './shop/shop.component';
+import { WeaponFilterComponent } from './weapons/filter/weapon-filter-page.component';
 import { WeaponListComponent } from './weapons/weapon-list-page.component';
 
 import { ItemService } from './item.service';
+import { WeaponFilterService } from './weapons/filter/weapon-filter.service';
 
 @NgModule({
     imports: [
@@ -25,10 +27,12 @@ import { ItemService } from './item.service';
         InventoryComponent,
         ItemsComponent,
         ShopComponent,
+        WeaponFilterComponent,
         WeaponListComponent
     ],
     providers: [
-        ItemService
+        ItemService,
+        WeaponFilterService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

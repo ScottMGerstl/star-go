@@ -1,4 +1,8 @@
-<action-bar actionBarTitle='Weapons'></action-bar>
+<action-bar actionBarTitle='Weapons'>
+    <ActionItem position="right" (tap)="onFilterTapped()" right-action-items>
+        <Label [text]="'fa-filter' | fonticon" class="fa"></Label>
+    </ActionItem>
+</action-bar>
 <StackLayout>
     <GridLayout columns="*, 30" rows="auto" class="search-text-container">
         <TextField col="0" (textChange)=onSearchTextChanged($event) #searchTextField></TextField>
@@ -10,7 +14,11 @@
                 <GridLayout col="1" row="1" columns="*,80" rows="auto,auto" class="item-container">
                     <Label col="0" row="0" [text]="item.name" class="item-name"></Label>
                     <Label col="1" row="0" [text]="item.price" class="item-price"></Label>
-                    <Label col="0" colSpan="2" row="1" [text]="'Damage ' + item.damage" class="item-price"></Label>
+                    <StackLayout orientation="horizontal" col="0" row="1" class="attribute-bubble-list">
+                        <attribute-bubble [value]="item.damage" type="damage"></attribute-bubble>
+                        <attribute-bubble [value]="item.critical" type="critical"></attribute-bubble>
+                        <attribute-bubble [value]="item.range" type="range"></attribute-bubble>
+                    </StackLayout>
                 </GridLayout>
             </GridLayout>
         </ng-template>

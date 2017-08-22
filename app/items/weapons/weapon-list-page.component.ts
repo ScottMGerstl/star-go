@@ -6,10 +6,10 @@ import { GestureEventData } from 'ui/gestures';
 import { TextField } from 'ui/text-field';
 import { BaseComponent } from '../../shared/base-component/base.component';
 
-// import { StorageService, StorageServiceKeys } from '../../../shared/services/storage.service';
-// import { WeaponFilter } from '../weapon-filter/weapon-filter';
-// import { WeaponFilterService } from '../weapon-filter/weapon-filter.service';
-// import { WeaponFilterRunner } from '../weapon-filter/weapon-filter-runner';
+import { StorageService, StorageServiceKeys } from '../../shared/storage/storage.service';
+import { WeaponFilter } from './filter/weapon-filter';
+import { WeaponFilterEngine } from './filter/weapon-filter-engine';
+import { WeaponFilterService } from './filter/weapon-filter.service';
 import { Weapon } from './weapon';
 
 import { ItemService } from '../item.service';
@@ -25,7 +25,7 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
     @Output() private addItemTapped: EventEmitter<Weapon> = new EventEmitter<Weapon>(false);
 
     private weaponFilterSubscription: Subscription;
-    // private filter: WeaponFilter;
+    private filter: WeaponFilter;
 
     private allItems: Array<Weapon>;
     private displayItems: Array<Weapon>;
@@ -34,7 +34,8 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
 
     private listItemLongPressed: boolean = false;
 
-    constructor(private fonticon: TNSFontIconService, private _itemService: ItemService, private _router: RouterExtensions, private _zone: NgZone) { //, private weaponFilterService: WeaponFilterService, private storage: StorageService) {
+    constructor(private fonticon: TNSFontIconService, private _itemService: ItemService, private _router: RouterExtensions,
+                private _zone: NgZone, private weaponFilterService: WeaponFilterService, private storage: StorageService) {
         super();
 
         this.allItems = [];
@@ -43,15 +44,15 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
 
     public ngOnInit(): void {
         // Clear the filter when the page is first presented
-        // this.storage.removeValue(StorageServiceKeys.weaponFilter);
+        this.storage.removeValue(StorageServiceKeys.weaponFilter);
 
         this.allItems = this._itemService.getWeaponList();
         this.displayItems = this.allItems;
 
-        // this.weaponFilterSubscription = this.weaponFilterService.weaponFilterSaved.subscribe((filter: WeaponFilter) => {
-        //     this.filter = filter;
-        //     this.handlePropertyFilter(filter);
-        // });
+        this.weaponFilterSubscription = this.weaponFilterService.weaponFilterSaved.subscribe((filter: WeaponFilter) => {
+            this.filter = filter;
+            this.handlePropertyFilter(filter);
+        });
     }
 
     public ngOnDestroy(): void {
@@ -95,12 +96,12 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
             this.displayItems = filteredItems;
         }
         else {
-            // if (this.filter) {
-            //     this.handlePropertyFilter(this.filter);
-            // }
-            // else {
+            if (this.filter) {
+                this.handlePropertyFilter(this.filter);
+            }
+            else {
                 this.displayItems = this.allItems;
-            // }
+            }
         }
     }
 
@@ -129,13 +130,13 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
             }
         };
 
-        this._router.navigate(['weapon-filter'], navigationDef);
+        this._router.navigate(['/items/weapon-filter'], navigationDef);
     }
 
-    // private handlePropertyFilter(filter: WeaponFilter) {
-    //     let filterEngine: WeaponFilterRunner = new WeaponFilterRunner();
-    //     let filteredItems: Weapon[] = filterEngine.runFilter(filter, this.allItems);
+    private handlePropertyFilter(filter: WeaponFilter) {
+        const filterEngine: WeaponFilterEngine = new WeaponFilterEngine();
+        const filteredItems: Array<Weapon> = filterEngine.runFilter(filter, this.allItems);
 
-    //     this.displayItems = filteredItems;
-    // }
+        this.displayItems = filteredItems;
+    }
 }
