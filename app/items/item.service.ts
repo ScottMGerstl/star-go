@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Weapon } from './weapons/weapon';
-import { WeaponFilterData } from './weapons/weapon-filter-data';
+import { WeaponFilterData } from './weapons/filter/weapon-filter-data';
 
 @Injectable()
 export class ItemService {

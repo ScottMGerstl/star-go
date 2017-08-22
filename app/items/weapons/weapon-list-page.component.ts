@@ -18,7 +18,8 @@ import { ItemService } from '../item.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'weapon-list-page',
     moduleId: module.id,
-    templateUrl: './weapon-list-page.component.html'
+    templateUrl: './weapon-list-page.component.html',
+    styleUrls: ['./weapon-list-page.component.css']
 })
 export class WeaponListComponent extends BaseComponent implements OnInit, OnDestroy {
     @Output() private addItemTapped: EventEmitter<Weapon> = new EventEmitter<Weapon>(false);

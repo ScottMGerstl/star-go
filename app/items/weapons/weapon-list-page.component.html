@@ -6,9 +6,12 @@
     </GridLayout>
     <ListView [items]="displayItems" (itemTap)="onItemTapped($event)" (longPress)="onItemLongPress($event)">
         <ng-template let-item="item">
-            <GridLayout columns="*, 80" rows="*" class="item-container">
-                <Label col="0" [text]="item.name" class="item-name"></Label>
-                <Label col="1" [text]="item.price" class="item-price"></Label>
+            <GridLayout rows="5,auto" columns="5,*,5" class="item-container-margin">
+                <GridLayout col="1" row="1" columns="*,80" rows="auto,auto" class="item-container">
+                    <Label col="0" row="0" [text]="item.name" class="item-name"></Label>
+                    <Label col="1" row="0" [text]="item.price" class="item-price"></Label>
+                    <Label col="0" colSpan="2" row="1" [text]="'Damage ' + item.damage" class="item-price"></Label>
+                </GridLayout>
             </GridLayout>
         </ng-template>
     </ListView>
