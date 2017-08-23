@@ -31,6 +31,7 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
     private displayItems: Array<Weapon>;
 
     @ViewChild('searchTextField') private searchTextField: ElementRef;
+    @ViewChild('filterPop') private filterPop: ElementRef;
 
     private listItemLongPressed: boolean = false;
 
@@ -138,5 +139,25 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
         const filteredItems: Array<Weapon> = filterEngine.runFilter(filter, this.allItems);
 
         this.displayItems = filteredItems;
+    }
+
+    private showFilterClearPrompt(): void {
+        this.filterPop.nativeElement.animate({
+            translate: { x: 0, y: -60 },
+            duration: 750
+        });
+    }
+
+    private dismissFilterClearPrompt(): void {
+        this.filterPop.nativeElement.animate({
+            translate: { x: 0, y: 60 },
+            duration: 750
+        });
+    }
+
+    private clearPropertyFilter() {
+        this.filter = null;
+        this.handlePropertyFilter(this.filter);
+        this.dismissFilterClearPrompt();
     }
 }

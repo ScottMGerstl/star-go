@@ -1,41 +1,47 @@
 <action-bar actionBarTitle='Filter Weapons'>
+    <NavigationButton ios:visibility="collapsed" android.systemIcon="ic_menu_save" (tap)="onFilterFinishTapped()" left-action-items>
+        <!-- <Label [text]="'fa-floppy-o' | fonticon" class="fa"></Label> -->
+    </NavigationButton>
+    <ActionItem android:visibility="collapsed" (tap)="onFilterFinishTapped()" ios.position="left" left-action-items>
+        <Label [text]="'fa-floppy-o' | fonticon" class="fa"></Label>
+    </ActionItem>
+
     <ActionItem *ngIf="!hasFilter" (tap)="onClearTapped()" position="right" right-action-items>
         <Label [text]="'fa-trash' | fonticon" class="fa"></Label>
     </ActionItem>
 </action-bar>
 <GridLayout rows="*,auto">
     <ScrollView row="0">
-        <StackLayout>
+        <StackLayout  class="scroll-container">
             <labeled-input label="Max Price" class="filter-stat filter-stat">
                 <TextField [(ngModel)]="maxPrice" keyboardType="number"></TextField>
             </labeled-input>
 
+            <labeled-input label="Ranges" class="filter-stat">
+                <FlexboxLayout class="filter-button-wrapper filter-stat">
+                    <Label *ngFor="let item of ranges" [text]="item.value" [class.empty]="item.selected !== true" class="filter-button range" (tap)="onMultiSelectTapped(item)"></Label>
+                </FlexboxLayout>
+            </labeled-input>
+
             <labeled-input label="Skills" class="filter-stat">
                 <FlexboxLayout class="filter-button-wrapper filter-stat">
-                    <Label *ngFor="let item of skills" [text]="item.value" [class.selected]="item.selected === true" class="filter-button" (tap)="onMultiSelectTapped(item)"></Label>
+                    <Label *ngFor="let item of skills" [text]="item.value" [class.empty]="item.selected !== true" class="filter-button skill" (tap)="onMultiSelectTapped(item)"></Label>
                 </FlexboxLayout>
             </labeled-input>
 
             <labeled-input label="Min Hard Points" class="filter-stat">
                 <FlexboxLayout class="filter-button-wrapper filter-stat">
-                    <Label *ngFor="let item of hardPoints" [text]="item.value" [class.selected]="item.selected === true" class="filter-button number-button"
+                    <Label *ngFor="let item of hardPoints" [text]="item.value" [class.empty]="item.selected !== true" class="filter-button number-button hard-points "
                         (tap)="onSingleSelectTapped(item, hardPoints)"></Label>
                 </FlexboxLayout>
             </labeled-input>
 
             <labeled-input label="Max Encumbrance" class="filter-stat">
                 <FlexboxLayout class="filter-button-wrapper filter-stat">
-                    <Label *ngFor="let item of encumbrances" [text]="item.value" [class.selected]="item.selected === true" class="filter-button number-button"
+                    <Label *ngFor="let item of encumbrances" [text]="item.value" [class.empty]="item.selected !== true" class="filter-button number-button encumbrance"
                         (tap)="onSingleSelectTapped(item, encumbrances)"></Label>
-                </FlexboxLayout>
-            </labeled-input>
-
-            <labeled-input label="Ranges" class="">
-                <FlexboxLayout class="filter-button-wrapper filter-stat">
-                    <Label *ngFor="let item of ranges" [text]="item.value" [class.selected]="item.selected === true" class="filter-button" (tap)="onMultiSelectTapped(item)"></Label>
                 </FlexboxLayout>
             </labeled-input>
         </StackLayout>
     </ScrollView>
-    <Button row="1" (tap)="onFilterFinishTapped($event)" class="bottom-button" text="Filter"></Button>
 </GridLayout>

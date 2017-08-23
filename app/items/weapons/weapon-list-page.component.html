@@ -2,13 +2,16 @@
     <ActionItem position="right" (tap)="onFilterTapped()" right-action-items>
         <Label [text]="'fa-filter' | fonticon" class="fa"></Label>
     </ActionItem>
+    <ActionItem position="right" (tap)="showFilterClearPrompt()" right-action-items>
+            <Label [text]="'fa-filter' | fonticon" class="fa"></Label>
+        </ActionItem>
 </action-bar>
-<StackLayout>
-    <GridLayout columns="*, 30" rows="auto" class="search-text-container">
+<GridLayout  columns="*" rows="auto,*,auto">
+    <GridLayout row="0" columns="*, 30" rows="auto" class="search-text-container">
         <TextField col="0" (textChange)=onSearchTextChanged($event) #searchTextField></TextField>
         <Label col="1" [text]="'fa-times' | fonticon" (tap)="onClearSearchTapped($event)" class="clear-search-text-button fa"></Label>
     </GridLayout>
-    <ListView [items]="displayItems" (itemTap)="onItemTapped($event)" (longPress)="onItemLongPress($event)">
+    <ListView  row="1" [items]="displayItems" (itemTap)="onItemTapped($event)" (longPress)="onItemLongPress($event)">
         <ng-template let-item="item">
             <GridLayout rows="5,auto" columns="5,*,5" class="item-container-margin">
                 <GridLayout col="1" row="1" columns="*,80" rows="auto,auto" class="item-container">
@@ -23,4 +26,9 @@
             </GridLayout>
         </ng-template>
     </ListView>
-</StackLayout>
+    <GridLayout row="2" columns="auto,*,auto,auto" class="filter-clear-pop" #filterPop>
+        <Label col="0" text="Remove filter?" class="prompt-text"></Label>
+        <Label col="2" text="Yes" class="prompt-text clear-filter-prompt-button" (tap)="clearPropertyFilter()"></Label>
+        <Label col="3" text="Dismiss" class="prompt-text dismiss-prompt-button" (tap)="dismissFilterClearPrompt()"></Label>
+    </GridLayout>
+</GridLayout>
