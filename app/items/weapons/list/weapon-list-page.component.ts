@@ -4,15 +4,15 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { Subscription } from 'rxjs';
 import { GestureEventData } from 'ui/gestures';
 import { TextField } from 'ui/text-field';
-import { BaseComponent } from '../../shared/base-component/base.component';
+import { BaseComponent } from '../../../shared/base-component/base.component';
 
-import { StorageService, StorageServiceKeys } from '../../shared/storage/storage.service';
-import { WeaponFilter } from './filter/weapon-filter';
-import { WeaponFilterEngine } from './filter/weapon-filter-engine';
-import { WeaponFilterService } from './filter/weapon-filter.service';
-import { Weapon } from './weapon';
+import { StorageService, StorageServiceKeys } from '../../../shared/storage/storage.service';
+import { WeaponFilter } from '../filter/weapon-filter';
+import { WeaponFilterEngine } from '../filter/weapon-filter-engine';
+import { WeaponFilterService } from '../filter/weapon-filter.service';
+import { Weapon } from '../weapon';
 
-import { ItemService } from '../item.service';
+import { ItemService } from '../../item.service';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -113,7 +113,7 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
             // show option dialog
         }
         else {
-            this._router.navigate(['item', selectedItem.name]);
+            this._router.navigate(['items/weapon-detail', selectedItem.name]);
         }
 
         this.listItemLongPressed = false;

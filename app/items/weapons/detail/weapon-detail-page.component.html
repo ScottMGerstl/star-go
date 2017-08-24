@@ -1,0 +1,25 @@
+<action-bar actionBarTitle='Weapons'>
+    <ActionItem position="right" (tap)="onFilterTapped()" right-action-items>
+        <Label [text]="'fa-plus' | fonticon" class="fa"(tap)="onAddTapped($event)"></Label>
+    </ActionItem>
+</action-bar>
+<StackLayout class="highlight-container">
+    <Label class="highlight-container-square"></Label>
+    <Image src="res://icon" height="100" width="100"></Image>
+    <Label [text]="item.name" class="item-name"></Label>
+    <Label [text]="item.price" class="item-price"></Label>
+</StackLayout>
+<GridLayout columns="*,*,*,*" rows="auto,auto,20,auto,auto" class="stats-container">
+    <labeled-stat label="Skill" [stat]="item.skill" col="0" row="0"></labeled-stat>
+    <labeled-stat label="Range" [stat]="item.range" col="1" row="0"></labeled-stat>
+    <labeled-stat label="Damage" [stat]="item.damage" col="2" row="0"></labeled-stat>
+    <labeled-stat label="Critical" [stat]="item.critical" col="3" row="0"></labeled-stat>
+
+    <labeled-stat label="Hard Points" [stat]="item.hardPoints" col="0" row="1"></labeled-stat>
+    <labeled-stat label="Encumbrance" [stat]="item.encumbrance" col="1" row="1"></labeled-stat>
+    <labeled-stat label="Rarity" [stat]="item.rarity" col="2" row="1"></labeled-stat>
+
+    <labeled-stat label="Special" [stat]="item.special || 'none'" col="0" colSpan="4" row="3" textWrap="true"></labeled-stat>
+
+    <labeled-stat label="Features" [stat]="item.features || 'none'" col="0" colSpan="4" row="4" textWrap="true"></labeled-stat>
+</GridLayout>

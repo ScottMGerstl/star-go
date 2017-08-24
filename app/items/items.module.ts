@@ -8,8 +8,9 @@ import { ItemsRoutingModule } from './items-routing.module';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ItemsComponent } from './items.component';
 import { ShopComponent } from './shop/shop.component';
+import { WeaponDetailComponent } from './weapons/detail/weapon-detail-page.component';
 import { WeaponFilterComponent } from './weapons/filter/weapon-filter-page.component';
-import { WeaponListComponent } from './weapons/weapon-list-page.component';
+import { WeaponListComponent } from './weapons/list/weapon-list-page.component';
 
 import { ItemService } from './item.service';
 import { WeaponFilterService } from './weapons/filter/weapon-filter.service';
@@ -27,6 +28,7 @@ import { WeaponFilterService } from './weapons/filter/weapon-filter.service';
         InventoryComponent,
         ItemsComponent,
         ShopComponent,
+        WeaponDetailComponent,
         WeaponFilterComponent,
         WeaponListComponent
     ],
