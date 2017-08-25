@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExtendedNavigationExtras, RouterExtensions } from 'nativescript-angular/router/router-extensions';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 import { ShopCategory } from './shop-category';
@@ -12,7 +13,7 @@ import { ShopCategory } from './shop-category';
 export class ShopComponent implements OnInit {
     private shopCategories: Array<ShopCategory>;
 
-    constructor(private fonticon: TNSFontIconService) {
+    constructor(private router: RouterExtensions, private fonticon: TNSFontIconService) {
         this.shopCategories = [];
     }
 
@@ -20,38 +21,36 @@ export class ShopComponent implements OnInit {
         this.shopCategories = [{
             title: 'Weapons',
             imageUrl: 'https://maxcdn.icons8.com/Share/icon/ios7/Cinema//lightsaber1600.png',
-            route: 'weapons'
+            route: '/items/weapons'
         }, {
             title: 'Armor',
             imageUrl: 'https://cdn4.iconfinder.com/data/icons/video-game-items-concepts/128/armor-helmet-spartan-512.png',
-            route: '/items/weapons'
+            route: ''
         }, {
             title: 'Vehicles',
             imageUrl: 'https://cdn0.iconfinder.com/data/icons/star-wars/512/falcon-512.png',
-            route: 'items/weapons'
-        }, {
-            title: 'Armor',
-            imageUrl: 'https://cdn4.iconfinder.com/data/icons/video-game-items-concepts/128/armor-helmet-spartan-512.png',
-            route: '/items/weapons'
-        }, {
-            title: 'Vehicles',
-            imageUrl: 'https://cdn0.iconfinder.com/data/icons/star-wars/512/falcon-512.png',
-            route: 'items/weapons'
-        }, {
-            title: 'Weapons',
-            imageUrl: 'https://maxcdn.icons8.com/Share/icon/ios7/Cinema//lightsaber1600.png',
-            route: 'weapons'
-        }, {
-            title: 'Armor',
-            imageUrl: 'https://cdn4.iconfinder.com/data/icons/video-game-items-concepts/128/armor-helmet-spartan-512.png',
-            route: '/items/weapons'
-        }, {
-            title: 'Vehicles',
-            imageUrl: 'https://cdn0.iconfinder.com/data/icons/star-wars/512/falcon-512.png',
-            route: 'items/weapons'
+            route: ''
         }];
     }
 
+    private onShopCategoryTapped(category: ShopCategory): void {
+        const navDef: ExtendedNavigationExtras = {
+            animated: true,
+            transition: {
+                name: 'slideLeft'
+            }
+        };
+
+        this.router.navigate([category.route], navDef);
+    }
+
+    /**
+     * gets the row configuration for the GridLayout that contains the categories
+     *
+     * @private
+     * @returns {string} the row config (auto,auto,10)
+     * @memberof ShopComponent
+     */
     private getRows(): string {
         let result: string = '';
 
@@ -65,13 +64,32 @@ export class ShopComponent implements OnInit {
             result += 'auto';
         }
 
-        return result + ',10';
+        // Add a bottom margin to the layout
+        result += ',10';
+
+        return result;
     }
 
+    /**
+     * finds which row the category belongs in based on its index and total length of all items
+     *
+     * @private
+     * @param {number} i the index of the category list being processed
+     * @returns {number} the row number (zero based)
+     * @memberof ShopComponent
+     */
     private getRowForIndex(i: number): number {
         return Math.floor(i / 2);
     }
 
+    /**
+     * finds which column the category belongs in based on its index and total column count
+     *
+     * @private
+     * @param {number} i the index of the category list being processed
+     * @returns {number} the column number (zero based)
+     * @memberof ShopComponent
+     */
     private getColumnForIndex(i: number): number {
         return Math.floor(i % 2);
     }

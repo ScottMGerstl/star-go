@@ -1,0 +1,60 @@
+@import '../../../app-variables';
+
+.filter-button-wrapper {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.filter-button {
+    padding: 7 13;
+    margin: 5 7 5 0;
+    text-align: center;
+    border-width: 1;
+    border-color: $damage;
+    border-radius: 50%;
+}
+
+.filter-button.skill{
+    border-color: $skill;
+    background-color: $skill;
+    color: #ffffff;
+}
+
+.filter-button.hard-points {
+    border-color: $hard-points;
+    background-color: $hard-points;
+    color: #ffffff;
+}
+
+.filter-button.encumbrance {
+    border-color: $encumbrance;
+    background-color: $encumbrance;
+    color: #ffffff;
+}
+
+.filter-button.range {
+    border-color: $range;
+    background-color: $range;
+    color: #ffffff;
+}
+
+.filter-stat {
+    margin-bottom: 10;
+    padding-bottom: 10;
+    border-color: #cccccc;
+    border-bottom-width: 1;
+}
+
+.bottom-button {
+    height: 50;
+    width: 100%;
+}
+
+.filter-button.empty {
+    background-color: #ffffff;
+    color: #777777;
+}
+
+.scroll-container {
+    padding: 10;
+}

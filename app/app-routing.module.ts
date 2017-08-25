@@ -3,7 +3,8 @@ import { Routes } from '@angular/router';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/items/shop', pathMatch: 'full' },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    // { path: '', redirectTo: '/items/weapon-detail/Holdout Blaster', pathMatch: 'full' },
     { path: 'home', loadChildren: './home/home.module#HomeModule' },
     { path: 'items', loadChildren: './items/items.module#ItemsModule' },
     { path: 'settings', loadChildren: './settings/settings.module#SettingsModule' }

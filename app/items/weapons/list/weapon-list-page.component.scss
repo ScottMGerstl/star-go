@@ -1,0 +1,41 @@
+.item-container-margin {
+    background-color: #eeeeee;
+}
+
+.item-container {
+    background-color: #ffffff;
+    border-color: #cccccc;
+    border-width: 1;
+    border-radius: 5;
+    padding: 10;
+}
+
+.item-name {
+    margin-bottom: 20px;
+}
+
+.item-price {
+    text-align: right;
+}
+
+.filter-button {
+    color: white;
+}
+
+.clear-search-text-button {
+    font-size: 25;
+    padding-top: 15;
+    padding-left: 3;
+}
+
+.filter-clear-pop {
+    background-color: #ffffff;
+    border-top-color: #cccccc;
+    border-top-width: 2;
+    margin-bottom: -60;
+}
+
+.prompt-text {
+    padding: 20;
+    text-align: center;
+}
