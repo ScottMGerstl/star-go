@@ -37,6 +37,7 @@
       "multiline": "never",
       "singleline": "never"
     }],
+    "forin": false,
     "prefer-conditional-expression": false,
     "one-line":[],
     "max-line-length": 200,

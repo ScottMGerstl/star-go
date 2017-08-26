@@ -4,7 +4,8 @@ import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 
 import { SharedModule } from '../shared/shared.module';
 import { CharacterRoutingModule } from './character-routing.module';
-import { CharacterDetailComponent } from './detail/character-detail-page.component';
+import { CharacterService } from './character.service';
+import { CharacterDetailComponent } from './detail/character-page.component';
 
 @NgModule({
     imports: [
@@ -17,6 +18,9 @@ import { CharacterDetailComponent } from './detail/character-detail-page.compone
     ],
     declarations: [
         CharacterDetailComponent
+    ],
+    providers: [
+        CharacterService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
