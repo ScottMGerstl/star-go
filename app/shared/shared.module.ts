@@ -5,6 +5,8 @@ import { NativeScriptUISideDrawerModule } from 'nativescript-telerik-ui/sidedraw
 import { ActionBarComponent } from './action-bar/action-bar.component';
 import { AttributeBubbleComponent } from './attribute-bubble/attribute-bubble.component';
 import { BaseNavigationComponent } from './base-navigation-page/base-navigation-page.component';
+import { DieComponent } from './dice/die/die.component';
+import { DiceListComponent } from './dice/list/dice-list.component';
 import { LabeledInputComponent } from './labeled-input/labeled-input.component';
 import { LabeledStatComponent } from './labeled-stat/labeled-stat.component';
 import { MyDrawerComponent } from './my-drawer/my-drawer.component';
@@ -19,6 +21,8 @@ import { StorageService } from './storage/storage.service';
         ActionBarComponent,
         AttributeBubbleComponent,
         BaseNavigationComponent,
+        DieComponent,
+        DiceListComponent,
         LabeledInputComponent,
         LabeledStatComponent,
         MyDrawerComponent
@@ -27,6 +31,8 @@ import { StorageService } from './storage/storage.service';
         ActionBarComponent,
         AttributeBubbleComponent,
         BaseNavigationComponent,
+        DieComponent,
+        DiceListComponent,
         LabeledInputComponent,
         LabeledStatComponent,
         MyDrawerComponent,

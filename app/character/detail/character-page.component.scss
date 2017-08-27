@@ -1,0 +1,28 @@
+.skill-list-item {
+    padding: 20 10;
+    border-bottom-style: solid;
+    border-bottom-width: 1;
+    border-bottom-color: #eeeeee;
+}
+
+.characteristic-item{
+
+    padding-top: 10;
+    padding-bottom: 10;
+    border-bottom-style: solid;
+    border-bottom-width: 3;
+    border-bottom-color: #eeeeee;
+
+    * {
+        text-align: center;
+    }
+}
+
+.characteristic-label,
+.skill-label {
+    font-size: 16;
+}
+
+.characteristic-value {
+    font-size: 30;
+}

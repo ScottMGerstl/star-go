@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BaseComponent } from '../../shared/base-component/base.component';
+import { DiceListConfiguration } from '../../shared/dice/list/dice-list-config';
 
 import { CharacterService } from '../character.service';
 
@@ -9,7 +10,6 @@ import { Characteristic } from '../models/characteristic';
 import { Characteristics } from '../models/characteristics';
 import { Skill } from '../models/skill';
 import { ThresholdStatistic } from '../models/threshold-stat';
-
 
 @Component({
     selector: 'character-page',
@@ -36,7 +36,9 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
         const result: Array<Skill> = [];
 
         for (const i in this.character.skills) {
-            result.push(this.character.skills[i]);
+            if ((this.character.skills[i] instanceof Array) === false) {
+                result.push(this.character.skills[i]);
+            }
         }
 
         return result;
@@ -52,6 +54,26 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
         if (!this.character) {
             this.character = this.characterService.getBlankCharacter();
         }
+    }
+
+    private getDiceConfig(skill: Skill): DiceListConfiguration {
+        const config: DiceListConfiguration = new DiceListConfiguration();
+
+        const characteristic: Characteristic = this.characteristics.find((ch) => ch.abbreviation === skill.characteristicCategory);
+
+        const characteristicValue: number = characteristic.value;
+        const skillRank: number = skill.rank;
+
+        if (characteristicValue >= skillRank) {
+            config.ability = characteristicValue - skillRank;
+            config.proficiency = skillRank;
+        }
+        else {
+            config.ability = skillRank - characteristicValue;
+            config.proficiency = characteristicValue;
+        }
+
+        return config;
     }
 }
 

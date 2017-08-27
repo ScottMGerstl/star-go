@@ -38,51 +38,51 @@ export class CharacterService {
                 agility: {
                     abbreviation: 'Ag',
                     name: 'Agility',
-                    value: 0
+                    value: 1
                 },
                 brawn: {
                     abbreviation: 'Br',
                     name: 'Brawn',
-                    value: 0
+                    value: 2
                 },
                 cunning: {
                     abbreviation: 'Cun',
                     name: 'Cunning',
-                    value: 0
+                    value: 3
                 },
                 intellect: {
                     abbreviation: 'Int',
                     name: 'Intellect',
-                    value: 0
+                    value: 4
                 },
                 presence: {
                     abbreviation: 'Pr',
                     name: 'Presence',
-                    value: 0
+                    value: 5
                 },
                 willpower: {
                     abbreviation: 'Will',
                     name: 'Willpower',
-                    value: 0
+                    value: 6
                 }
             },
             skills: {
                 astrogation: {
                     characteristicCategory: 'Int',
                     label: 'Astrogation',
-                    rank: 0,
+                    rank: 4,
                     skillGroup: 'General'
                 },
                 athletics: {
                     characteristicCategory: 'Br',
                     label: 'Athletics',
-                    rank: 0,
+                    rank: 2,
                     skillGroup: 'General'
                 },
                 charm: {
                     characteristicCategory: 'Pr',
                     label: 'Presence',
-                    rank: 0,
+                    rank: 3,
                     skillGroup: 'General'
                 },
                 coersion: {

@@ -1,18 +1,18 @@
-<base-navigation-page>
+<base-navigation-page actionBarTitle="Character" selectedPage="Character">
     <ScrollView>
         <GridLayout columns="*,*,*,*,*,*" rows="auto,*">
             <ng-template ngFor let-option [ngForOf]="characteristics" let-i="index">
-                <StackLayout row="0" [col]="+i">
-                    <Label [text]="option.abbreviation"></Label>
-                    <Label [text]="option.value"></Label>
+                <StackLayout row="0" [col]="+i" class="characteristic-item">
+                    <Label class="characteristic-label" [text]="option.abbreviation"></Label>
+                    <Label class="characteristic-value" [text]="option.value"></Label>
                 </StackLayout>
             </ng-template>
             <StackLayout row="1" [colSpan]="characteristics.length">
-                <ng-template ngFor let-option [ngForOf]="skills" let-i="index">
-                    <StackLayout orientation="horizontal">
-                        <Label [text]="option.label + ' (' + option.characteristicCategory + ')'"></Label>
-                        <Label [text]="option.rank"></Label>
-                    </StackLayout>
+                <ng-template ngFor let-skill [ngForOf]="skills" let-i="index">
+                    <GridLayout class="skill-list-item" rows="auto" columns="auto,*,auto">
+                        <Label col="0" class="skill-label" [text]="skill.label + ' (' + skill.characteristicCategory + ')'"></Label>
+                        <StackLayout class="die-list-container" col="2" dice-list [config]="getDiceConfig(skill)"></StackLayout>
+                    </GridLayout>
                 </ng-template>
             </StackLayout>
         </GridLayout>
