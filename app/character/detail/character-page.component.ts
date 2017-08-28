@@ -130,10 +130,6 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
         this.snackbar.show();
     }
 
-    private onSelectorDismissed(): void {
-        this.selectionState.selectedStat = null;
-    }
-
     private onSelected(selection: number): void {
 
         if (this.selectionState.selectedStatType === 'Skill') {
@@ -144,10 +140,12 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
             (<Characteristic>this.selectionState.selectedStat).value = selection;
         }
 
+        this.selectionState.selectedStat = null;
         this.snackbar.dismiss();
     }
 
     private onSelectionCancelled(): void {
+        this.selectionState.selectedStat = null;
         this.snackbar.dismiss();
     }
 }

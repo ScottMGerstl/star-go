@@ -27,8 +27,7 @@
         </ScrollView>
         <GridLayout row="1" stat-level-selector snackbar
                     [title]="selectionState.selectorTitle" [statRange]="selectionState.selectorNumbers" [selection]="selectionState.selection"
-                    (selected)="onSelected($event)" (canceled)="onSelectionCancelled()"
-                    (dismissed)="onSelectorDismissed()">
+                    (selected)="onSelected($event)" (canceled)="onSelectionCancelled()">
         </GridLayout>
     </GridLayout>
 </base-navigation-page>
