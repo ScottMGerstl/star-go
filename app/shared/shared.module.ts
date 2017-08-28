@@ -10,6 +10,7 @@ import { DiceListComponent } from './dice/list/dice-list.component';
 import { LabeledInputComponent } from './labeled-input/labeled-input.component';
 import { LabeledStatComponent } from './labeled-stat/labeled-stat.component';
 import { MyDrawerComponent } from './my-drawer/my-drawer.component';
+import { SnackbarDirective } from './snackbar/snackbar.directive';
 import { StorageService } from './storage/storage.service';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { StorageService } from './storage/storage.service';
         DiceListComponent,
         LabeledInputComponent,
         LabeledStatComponent,
-        MyDrawerComponent
+        MyDrawerComponent,
+        SnackbarDirective
     ],
     exports: [
         ActionBarComponent,
@@ -36,7 +38,8 @@ import { StorageService } from './storage/storage.service';
         LabeledInputComponent,
         LabeledStatComponent,
         MyDrawerComponent,
-        NativeScriptUISideDrawerModule
+        NativeScriptUISideDrawerModule,
+        SnackbarDirective
     ],
     providers: [
         StorageService

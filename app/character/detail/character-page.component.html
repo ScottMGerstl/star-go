@@ -25,17 +25,11 @@
                 </StackLayout>
             </GridLayout>
         </ScrollView>
-        <GridLayout row="1" rows="auto,auto" columns="*,*,*,*,*,*" class="rank-selector" #rankSelector>
+        <GridLayout row="1" rows="auto,auto" columns="*,*,*,*,*,*" class="rank-selector" snackbar>
             <Label row="0" col="0" colSpan="5" [text]="selectedSkill?.label + ' Rank'" class="rank-selection-title"></Label>
-            <Label row="0" col="5" text="Cancel" class="cancel-button" (tap)="dismissRankRelector()"></Label>
+            <Label row="0" col="5" text="Cancel" class="cancel-button" (tap)="dismissRankSelector()"></Label>
 
-            <Label *ngFor="let number of numbers" row="1" [col]="number" [text]="number" class="rank-selection" (tap)="saveSelectedRank(number)" [class.selected]="selectedRank == number"></Label>
-            <!-- <Label row="1" col="0" text="1" class="rank-selection" (tap)="saveSelectedRank(0)" [class.selected]="selectedRank == 0"></Label>
-            <Label row="1" col="1" text="1" class="rank-selection" (tap)="saveSelectedRank(1)" [class.selected]="selectedRank == 1"></Label>
-            <Label row="1" col="2" text="2" class="rank-selection" (tap)="saveSelectedRank(2)" [class.selected]="selectedRank == 2"></Label>
-            <Label row="1" col="3" text="3" class="rank-selection" (tap)="saveSelectedRank(3)" [class.selected]="selectedRank == 3"></Label>
-            <Label row="1" col="4" text="4" class="rank-selection" (tap)="saveSelectedRank(4)" [class.selected]="selectedRank == 4"></Label>
-            <Label row="1" col="5" text="5" class="rank-selection" (tap)="saveSelectedRank(5)" [class.selected]="selectedRank == 5"></Label> -->
+            <Label *ngFor="let number of numbers; let i = index" row="1" [col]="i" [text]="number" class="rank-selection" (tap)="saveSelectedRank(number)" [class.selected]="selectedRank == number"></Label>
         </GridLayout>
     </GridLayout>
 </base-navigation-page>

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { BaseComponent } from '../../shared/base-component/base.component';
 import { DiceListConfiguration } from '../../shared/dice/list/dice-list-config';
+import { SnackbarDirective } from '../../shared/snackbar/snackbar.directive';
 
 import { CharacterService } from '../character.service';
 
@@ -19,7 +20,7 @@ import { ThresholdStatistic } from '../models/threshold-stat';
 })
 export class CharacterDetailComponent extends BaseComponent implements OnInit {
 
-    @ViewChild('rankSelector') private rankSelectorRef: ElementRef;
+    @ViewChild(SnackbarDirective) private snackbar: SnackbarDirective;
 
     private mode: Mode = 'view';
     private character: Character;
@@ -105,25 +106,18 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
         this.selectedRank = skill.rank;
         this.selectedSkill = skill;
 
-        this.rankSelectorRef.nativeElement.animate({
-            translate: { x: 0, y: -100 },
-            duration: 750
-        });
+        this.snackbar.show();
     }
 
     private saveSelectedRank(rank: number): void {
         this.selectedSkill.rank = rank;
         this.selectedRank = rank;
 
-        this.dismissRankRelector();
+        this.dismissRankSelector();
     }
 
-    private dismissRankRelector(): void {
-        this.rankSelectorRef.nativeElement.animate({
-            translate: { x: 0, y: 100 },
-            duration: 750
-        })
-            .then(() => this.selectedSkill = null);
+    private dismissRankSelector(): void {
+        this.snackbar.dismiss(() => this.selectedSkill = null);
     }
 }
 
