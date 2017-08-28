@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CharacterRoutingModule } from './character-routing.module';
 import { CharacterService } from './character.service';
 import { CharacterDetailComponent } from './detail/character-page.component';
+import { StatLevelSelectorComponent } from './stat-level-snackbar/stat-level-selector.component';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { CharacterDetailComponent } from './detail/character-page.component';
         })
     ],
     declarations: [
-        CharacterDetailComponent
+        CharacterDetailComponent,
+        StatLevelSelectorComponent
     ],
     providers: [
         CharacterService

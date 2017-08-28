@@ -1,0 +1,35 @@
+
+.stat-selector {
+    background-color: #222222;
+    color: #ffffff;
+    font-size: 14;
+    padding: 10 5 10 10;
+}
+
+.stat-selection-title {
+    font-weight: bold;
+    font-size: 16;
+}
+
+.stat-selection {
+    padding: 10;
+    margin-right: 5;
+    border-color: #eeeeee;
+    color: #ffffff;
+    border-width: 1;
+    margin-top: 15;
+    text-align: center;
+    border-radius: 5;
+}
+
+.selected {
+    color: #222222;
+    background-color: #eeeeee;
+}
+
+.cancel-button {
+    text-align: right;
+    margin-right: 5;
+    color: red;
+}
+

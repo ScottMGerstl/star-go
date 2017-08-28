@@ -8,15 +8,15 @@
     <GridLayout rows="*,auto">
         <ScrollView row="0">
             <GridLayout columns="*,*,*,*,*,*" rows="auto,*">
-                <ng-template ngFor let-option [ngForOf]="characteristics" let-i="index">
-                    <StackLayout row="0" [col]="+i" class="characteristic-item">
-                        <Label class="characteristic-label" [text]="option.abbreviation"></Label>
-                        <Label class="characteristic-value" [text]="option.value"></Label>
+                <ng-template ngFor let-characteristic [ngForOf]="characteristics" let-i="index">
+                    <StackLayout row="0" [col]="+i" class="characteristic-item" (tap)="onCharacteristicTapped(characteristic)">
+                        <Label class="characteristic-label" [text]="characteristic.abbreviation"></Label>
+                        <Label class="characteristic-value" [text]="characteristic.value"></Label>
                     </StackLayout>
                 </ng-template>
                 <StackLayout row="1" [colSpan]="characteristics.length">
                     <ng-template ngFor let-skill [ngForOf]="skills" let-i="index">
-                        <GridLayout rows="auto" columns="auto,*,auto" (tap)="onSkillTapped(skill, snackbar)" class="skill-list-item">
+                        <GridLayout rows="auto" columns="auto,*,auto" (tap)="onSkillTapped(skill)" class="skill-list-item">
                             <Label col="0" class="skill-label" [text]="skill.label + ' (' + skill.characteristicCategory + ')'"></Label>
                             <StackLayout *ngIf="mode === 'view'" class="die-list-container" col="2" dice-list [config]="getDiceConfig(skill)"></StackLayout>
                             <Label *ngIf="mode === 'edit'" col="2" [text]="'Ranks: ' + skill.rank"></Label>
@@ -25,11 +25,10 @@
                 </StackLayout>
             </GridLayout>
         </ScrollView>
-        <GridLayout row="1" rows="auto,auto" columns="*,*,*,*,*,*" class="rank-selector" snackbar>
-            <Label row="0" col="0" colSpan="5" [text]="selectedSkill?.label + ' Rank'" class="rank-selection-title"></Label>
-            <Label row="0" col="5" text="Cancel" class="cancel-button" (tap)="dismissRankSelector()"></Label>
-
-            <Label *ngFor="let number of numbers; let i = index" row="1" [col]="i" [text]="number" class="rank-selection" (tap)="saveSelectedRank(number)" [class.selected]="selectedRank == number"></Label>
+        <GridLayout row="1" stat-level-selector snackbar
+                    [title]="selectionState.selectorTitle" [statRange]="selectionState.selectorNumbers" [selection]="selectionState.selection"
+                    (selected)="onSelected($event)" (canceled)="onSelectionCancelled()"
+                    (dismissed)="onSelectorDismissed()">
         </GridLayout>
     </GridLayout>
 </base-navigation-page>

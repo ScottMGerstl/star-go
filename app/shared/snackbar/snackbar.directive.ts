@@ -1,4 +1,4 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Output } from '@angular/core';
 import { screen, ScreenMetrics } from 'platform';
 
 const screenScale: number = screen.mainScreen.scale;
@@ -9,6 +9,8 @@ const offScreenMargin: number = screen.mainScreen.heightDIPs * -1;
 })
 export class SnackbarDirective {
 
+    @Output() private dismissed: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
     private element: ElementRef;
 
     constructor(el: ElementRef) {
@@ -17,9 +19,9 @@ export class SnackbarDirective {
     }
 
     public show(): void {
-        if (this.element.nativeElement.marginBottom === offScreenMargin) {
-            this.element.nativeElement.marginBottom = this.getTranslateYHeight() * -1;
-        }
+        // if (this.element.nativeElement.marginBottom === offScreenMargin) {
+        //     this.element.nativeElement.marginBottom = this.getTranslateYHeight() * -2;
+        // }
 
         this.element.nativeElement.animate({
             translate: { x: 0, y: this.getTranslateYHeight() * -1 },
@@ -27,16 +29,12 @@ export class SnackbarDirective {
         });
     }
 
-    public dismiss(onDismissComplete: () => void): void {
+    public dismiss(): void {
         this.element.nativeElement.animate({
             translate: { x: 0, y: this.getTranslateYHeight() },
             duration: 750
         })
-        .then(() => {
-            if (onDismissComplete) {
-                onDismissComplete();
-            }
-        });
+        .then(() => this.dismissed.emit(true));
     }
 
     private getTranslateYHeight(): number {
