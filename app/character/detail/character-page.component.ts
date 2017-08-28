@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { BaseComponent } from '../../shared/base-component/base.component';
 import { DiceListConfiguration } from '../../shared/dice/list/dice-list-config';
@@ -19,8 +19,14 @@ import { ThresholdStatistic } from '../models/threshold-stat';
 })
 export class CharacterDetailComponent extends BaseComponent implements OnInit {
 
+    @ViewChild('rankSelector') private rankSelectorRef: ElementRef;
+
     private mode: Mode = 'view';
     private character: Character;
+    private numbers: Array<number>;
+
+    private selectedRank: number;
+    private selectedSkill: Skill;
 
     private get characteristics(): Array<Characteristic> {
         const result: Array<Characteristic> = [];
@@ -46,6 +52,10 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
 
     constructor(private characterService: CharacterService) {
         super();
+
+        this.selectedRank = 0;
+        this.selectedSkill = new Skill();
+        this.numbers = [0, 1, 2, 3, 4, 5];
     }
 
     public ngOnInit(): void {
@@ -53,6 +63,12 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
 
         if (!this.character) {
             this.character = this.characterService.getBlankCharacter();
+        }
+    }
+
+    private onSkillTapped(skill: Skill): void {
+        if (this.mode === 'edit') {
+            this.showRankSelector(skill);
         }
     }
 
@@ -74,6 +90,40 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
         }
 
         return config;
+    }
+
+    private onEditTapped(): void {
+        this.mode = 'edit';
+    }
+
+    private onSaveTapped(): void {
+        this.mode = 'view';
+    }
+
+    private showRankSelector(skill: Skill): void {
+
+        this.selectedRank = skill.rank;
+        this.selectedSkill = skill;
+
+        this.rankSelectorRef.nativeElement.animate({
+            translate: { x: 0, y: -100 },
+            duration: 750
+        });
+    }
+
+    private saveSelectedRank(rank: number): void {
+        this.selectedSkill.rank = rank;
+        this.selectedRank = rank;
+
+        this.dismissRankRelector();
+    }
+
+    private dismissRankRelector(): void {
+        this.rankSelectorRef.nativeElement.animate({
+            translate: { x: 0, y: 100 },
+            duration: 750
+        })
+            .then(() => this.selectedSkill = null);
     }
 }
 
