@@ -19,10 +19,6 @@ export class SnackbarDirective {
     }
 
     public show(): void {
-        // if (this.element.nativeElement.marginBottom === offScreenMargin) {
-        //     this.element.nativeElement.marginBottom = this.getTranslateYHeight() * -2;
-        // }
-
         this.element.nativeElement.animate({
             translate: { x: 0, y: this.getTranslateYHeight() * -1 },
             duration: 750

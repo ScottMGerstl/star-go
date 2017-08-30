@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { SnackbarDirective } from '../../shared/snackbar/snackbar.directive';
 
 @Component({
     selector: 'stat-level-selector, [stat-level-selector]',
@@ -15,9 +14,6 @@ export class StatLevelSelectorComponent {
 
     @Output() private selected: EventEmitter<number> = new EventEmitter<number>(false);
     @Output() private canceled: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-
-    @ViewChild(SnackbarDirective) private snackbar: SnackbarDirective;
-
 
     constructor() {
         this.statRange = [];

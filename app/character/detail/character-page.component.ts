@@ -94,6 +94,7 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
     }
 
     private onSaveTapped(): void {
+        this.characterService.saveCharacter(this.character);
         this.mode = 'view';
     }
 
@@ -140,6 +141,7 @@ export class CharacterDetailComponent extends BaseComponent implements OnInit {
             (<Characteristic>this.selectionState.selectedStat).value = selection;
         }
 
+        this.selectionState.selection = selection;
         this.selectionState.selectedStat = null;
         this.snackbar.dismiss();
     }
