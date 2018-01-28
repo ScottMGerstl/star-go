@@ -34,6 +34,13 @@ export class ShopComponent implements OnInit {
     }
 
     private onShopCategoryTapped(category: ShopCategory): void {
+
+        if (category.route === '') {
+            alert('category not implemented');
+
+            return;
+        }
+
         const navDef: ExtendedNavigationExtras = {
             animated: true,
             transition: {
