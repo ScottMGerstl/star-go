@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import * as appSettings from 'application-settings';
 
 export enum StorageServiceKeys {
-    weaponFilter
+    weaponFilter,
+    character
 }
 
 @Injectable()

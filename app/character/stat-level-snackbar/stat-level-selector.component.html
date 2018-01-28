@@ -1,0 +1,8 @@
+<GridLayout rows="auto,auto" [columns]="gridColumns" class="stat-selector" (tap)="onLayoutTapped()">
+    <Label row="0" col="0" [colSpan]="statRange.length - 1" [text]="title" class="stat-selection-title"></Label>
+    <Label row="0" [col]="statRange.length" text="Cancel" class="cancel-button" (tap)="onCanceled()"></Label>
+
+    <Label *ngFor="let number of statRange; let i = index"
+            row="1" [col]="i" [text]="number" class="stat-selection"
+            (tap)="onSelected(number)" [class.selected]="selection === number"></Label>
+</GridLayout>

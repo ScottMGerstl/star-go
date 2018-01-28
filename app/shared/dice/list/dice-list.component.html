@@ -1,0 +1,5 @@
+<StackLayout orientation="horizontal">
+    <ng-template ngFor let-dieType [ngForOf]="diceDisplayList">
+        <dice [type]="dieType"></dice>
+    </ng-template>
+</StackLayout>

@@ -40,6 +40,12 @@ export class MyDrawerComponent implements OnInit {
                 icon: '\uf015'
             },
             {
+                title: 'Character',
+                name: 'Character',
+                route: '/character',
+                icon: '\uf007'
+            },
+            {
                 title: 'Inventory',
                 name: 'inventory',
                 route: '/items/inventory',

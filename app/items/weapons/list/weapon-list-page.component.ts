@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { GestureEventData } from 'ui/gestures';
 import { TextField } from 'ui/text-field';
 import { BaseComponent } from '../../../shared/base-component/base.component';
+import { SnackbarDirective } from '../../../shared/snackbar/snackbar.directive';
 
 import { StorageService, StorageServiceKeys } from '../../../shared/storage/storage.service';
 import { WeaponFilter } from '../filter/weapon-filter';
@@ -31,7 +32,7 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
     private displayItems: Array<Weapon>;
 
     @ViewChild('searchTextField') private searchTextField: ElementRef;
-    @ViewChild('filterPop') private filterPop: ElementRef;
+    @ViewChild(SnackbarDirective) private snackbar: SnackbarDirective;
 
     private listItemLongPressed: boolean = false;
 
@@ -142,17 +143,11 @@ export class WeaponListComponent extends BaseComponent implements OnInit, OnDest
     }
 
     private showFilterClearPrompt(): void {
-        this.filterPop.nativeElement.animate({
-            translate: { x: 0, y: -60 },
-            duration: 750
-        });
+        this.snackbar.show();
     }
 
     private dismissFilterClearPrompt(): void {
-        this.filterPop.nativeElement.animate({
-            translate: { x: 0, y: 60 },
-            duration: 750
-        });
+        this.snackbar.dismiss();
     }
 
     private clearPropertyFilter() {

@@ -26,7 +26,7 @@
             </GridLayout>
         </ng-template>
     </ListView>
-    <GridLayout row="2" columns="auto,*,auto,auto" class="filter-clear-pop" #filterPop>
+    <GridLayout row="2" columns="auto,*,auto,auto" class="filter-clear-pop" snackbar>
         <Label col="0" text="Remove filter?" class="prompt-text"></Label>
         <Label col="2" text="Yes" class="prompt-text clear-filter-prompt-button" (tap)="clearPropertyFilter()"></Label>
         <Label col="3" text="Dismiss" class="prompt-text dismiss-prompt-button" (tap)="dismissFilterClearPrompt()"></Label>

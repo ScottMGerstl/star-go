@@ -1,0 +1,40 @@
+.ability,
+.proficiency,
+.difficulty,
+.challenge,
+.boost,
+.setback,
+.force {
+    width: 100px;
+	height: 100px;
+    border-radius: 100;
+    margin-left: 5;
+}
+
+.ability {
+    background-color: #21BA31;
+}
+
+.proficiency {
+    background-color: #FBFA1C;
+}
+
+.difficulty {
+    background-color: #760A87;
+}
+
+.challenge {
+    background-color: #CE0909;
+}
+
+.boost {
+    background-color: #6ED2FD;
+}
+
+.setback {
+    background-color: #313334;
+}
+
+.force {
+    background-color: #C0BDBD;
+}
